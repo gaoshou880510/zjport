@@ -10,6 +10,6 @@ public class WebDriver2 {
         WebDriver driver;
         driver = new InternetExplorerDriver();
         driver.navigate().to("http://www.baidu.com");
-
+        System.out.println("dfa");
     }
 }
