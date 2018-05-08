@@ -11,5 +11,7 @@ public class WebDriver2 {
         driver = new InternetExplorerDriver();
         driver.navigate().to("http://www.baidu.com");
         System.out.println("dfa");
+        System.out.println("dafds");
+
     }
 }
