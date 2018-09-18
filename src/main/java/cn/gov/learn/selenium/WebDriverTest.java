@@ -13,5 +13,6 @@ public class WebDriverTest {
         driver = new ChromeDriver();
         driver.navigate().to("http://www.baidu.com");
         System.out.println("4566");
+         System.out.println("88888");
     }
 }
