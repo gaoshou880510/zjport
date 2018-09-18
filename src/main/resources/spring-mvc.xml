@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--使用注解来进行请求映射，开启springmvc注解-->
+    <mvc:annotation-driven/>
+
+    <!--视图解析器,将逻辑视图转为物理视图-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--重定向时是否添加上下文路径，prefix前缀   suffix后缀-->
+        <property name="redirectContextRelative" value="true"></property>
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--配置自定义视图对应的解析器BeanNameViewResolver
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="100"></property>
+    </bean>-->
+
+    <!--扫描所有配置@Controller  @Service-->
+    <context:component-scan base-package="cn.gov"></context:component-scan>
+
+</beans>

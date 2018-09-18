@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<settings>
+		<setting name="cacheEnabled" value="true"></setting>
+		<setting name="defaultStatementTimeout" value="3000"></setting>
+		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+		<setting name="proxyFactory" value="CGLIB"></setting>
+		<setting name="lazyLoadingEnabled" value="true"></setting>
+	</settings>
+	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<property name="dialect" value="mysql"></property>
+
+			<!--该参数默认为false，设置为true时，会将rowbounds第一个参数offset当成pagenum页码使用，和startpage中的pagenum效果一样-->
+			<property name="offsetAsPageNum" value="true"></property>
+			<!--该参数默认为false，设置为true时，会将rowbounds分页会进行count查询-->
+			<property name="rowBoundsWithCount" value="mysql"></property>
+			<!--设置为true时，如果pagesize=0或者rowrounds.limit=0就会查询出全部结果，相当于没有执行分页查询，但是返回结果仍然是page类型-->
+			<property name="pageSizeZero" value="mysql"></property>
+		</plugin>
+	</plugins>
+
+
+
+</configuration>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gov.zjport.dao.VIPDao">
+
+  <resultMap id="VIPMap" type="cn.gov.zjport.entity.VIPEntity">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SEX" jdbcType="INTEGER" property="male" />
+    <result column="AGE" jdbcType="INTEGER" property="age" />
+    <result column="QQ" jdbcType="VARCHAR" property="qq" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="ZIP" jdbcType="VARCHAR" property="zip" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="RANK" jdbcType="INTEGER" property="rank" />
+    <result column="AMOUNT" jdbcType="INTEGER" property="amount" />
+  </resultMap>
+
+
+<!--＃{}将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。如：order by #{id}，如果传入的值是111,那么解析成sql时的值为order by “111”, 如果传入的值是id，则解析成的sql为order by “id”。
+${}将传入的数据直接显示生成在sql中。如：order by ${id}，如果传入的值是111,那么解析成sql时的值为order by 111, 如果传入的值是id，则解析成的sql为order
+by id
+-->
+
+  <insert id="insert">
+    insert into vip(id,code,name,age,sex,qq,email,address,zip,remark,rank,amount)
+    values(#{id},#{code},#{name},#{age},#{sex},#{qq},#{email},#{address},#{zip},#{remark},#{rank},#{amount})
+  </insert>
+
+
+  <update id="update">
+    update vip set
+    code=#{code},
+    name=#{name},
+    age=#{age},
+    sex=#{sex},
+    qq=#{qq},
+    email=#{email},
+    address=#{address},
+    zip=#{zip},
+    remark=#{remark},
+    rank=#{rank},
+    amount=#{amount}
+    where id=#{id}
+  </update>
+
+  <select id="exsits" resultType="java.lang.Boolean">
+    select count(1)>0 from vip where ${key}=#{value}
+  </select>
+
+  <select id="select" resultMap="VIPMap">
+      select * from vip where ${key}=#{value}
+  </select>
+
+  <select id="selectLike" resultMap="VIPMap">
+    select * from vip
+    <if test="key!=null">
+      where code like #{key}
+      or name like #{key}
+      or qq like #{key}
+      or email like #{key}
+      or address like #{key}
+      or remark like #{key}
+    </if>
+    order by code
+  </select>
+
+
+
+
+
+
+</mapper>

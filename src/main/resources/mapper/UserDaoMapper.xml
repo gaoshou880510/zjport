@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gov.zjport.dao.UserDao">
+
+  <select id="select" resultType="cn.gov.zjport.entity.UserEntity">
+    select * from user where ${key}=#{value}
+  </select>
+
+
+  <update id="update">
+    update user set
+    account=#{account},
+    name=#{name},
+    password=#{password}
+    where id=#{id}
+  </update>
+
+
+
+
+
+
+
+</mapper>
